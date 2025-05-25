@@ -9,32 +9,16 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    # Run all commands from your employees-main folder
     defaults:
       run:
         working-directory: employees-main
 
     steps:
-      # 1) Grab your code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2) Show permissions before we fix them (for debugging)
-      - name: Debug: ls mvnw before
-        run: ls -l mvnw
-
-      # 3) Make mvnw executable
-      - name: Grant execute permission
-        run: chmod +x mvnw
-
-      # 4) Show permissions after chmod (should have an x now)
-      - name: Debug: ls mvnw after
-        run: ls -l mvnw
-
-      # 5) Build your app
       - name: Build with Maven Wrapper
         run: ./mvnw clean package
 
-      # 6) Run your tests
       - name: Run tests
         run: ./mvnw test
