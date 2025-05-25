@@ -1,0 +1,24 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # ⬇️ everything after checkout will run from employees-main/
+    defaults:
+      run:
+        working-directory: employees-main
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: ./mvnw clean package
+
+      - name: Test
+        run: ./mvnw test
