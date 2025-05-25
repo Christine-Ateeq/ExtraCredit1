@@ -1,0 +1,25 @@
+# Give your workflow a friendly name
+name: Build and Test
+
+# Tell GitHub when to run this workflow
+on:
+  push:
+    branches: [ main ]        # run when you push to main
+  workflow_dispatch:         # lets you trigger it manually too
+
+# Define the job(s) that will run
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest   # use a Linux machine
+
+    steps:
+      # 1) Grab your code
+      - uses: actions/checkout@v2
+
+      # 2) Build your app with Maven Wrapper
+      - name: Build
+        run: ./mvnw clean package
+
+      # 3) Run your tests
+      - name: Test
+        run: ./mvnw test
