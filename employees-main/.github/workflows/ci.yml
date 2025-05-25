@@ -1,14 +1,17 @@
-on: [push]  
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main      # or your default branch name
+  workflow_dispatch:   # lets you trigger it by hand
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest  
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Build with Maven Wrapper
+      - name: Build
         run: ./mvnw clean package
-
-      - name: Run tests
+      - name: Test
         run: ./mvnw test
