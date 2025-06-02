@@ -228,7 +228,7 @@ jobs:
       - name: Rollback to specified revision
         run: |
           TARGET_REVISION="${{ github.event.inputs.target_revision }}"
-          TARGET_TASK_DEF="arn:aws:ecs:us-east-1:916705025696:task-definition/payroll-service:$TARGET_REVISION"
+          TARGET_TASK_DEF="arn:aws:ecs:us-east-1:028602899252:task-definition/payroll-service:$TARGET_REVISION"
 
           echo "⚠️  ROLLBACK INITIATED"
           echo "🎯 Rolling back to revision: $TARGET_REVISION"
