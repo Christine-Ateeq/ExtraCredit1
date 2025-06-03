@@ -12,4 +12,5 @@ public interface EmployeeService {
     ResponseEntity<?> save(EmployeeDTO employee, Long id); 
     ResponseEntity<?> deleteById(Long id); 
     ResponseEntity<?> deleteByEmail(String email);
+    public CollectionModel<EntityModel<EmployeeDTO>> findByNameStartingWith(String letter);
 }

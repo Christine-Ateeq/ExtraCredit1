@@ -60,4 +60,8 @@ class EmployeeController {
     public ResponseEntity<?> deleteEmployeeByEmail(@PathVariable String email) {
         return employeeService.deleteByEmail(email);
     }
+    @GetMapping("/employees/starts/{letter}")
+    public CollectionModel<EntityModel<EmployeeDTO>> getByFirstLetter(@PathVariable String letter) {
+        return employeeService.findByNameStartingWith(letter);
+    }
 }
